@@ -1,0 +1,11 @@
+.header{
+    background-color:blue;
+    height: 100px;
+    width: 100%;
+}
+.header img{
+    float: left;
+    height: 100px;
+    
+    margin-left: 50px;
+}
