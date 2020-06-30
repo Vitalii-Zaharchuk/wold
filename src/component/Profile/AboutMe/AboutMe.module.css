@@ -1,0 +1,14 @@
+.aboutMe{
+    margin-top: 30px;
+    display: flex;
+}
+.ava img{
+    border: 1px solid white; 
+    border-radius: 25px;
+}
+.me{
+    margin-left: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    color: blue;
+}
