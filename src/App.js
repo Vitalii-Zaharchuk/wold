@@ -7,15 +7,15 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Profile from './component/Profile/Profile';
 import Message from './component/Message/Message';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
     <div className="App">
       <Header/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><Profile/>}/>
-      <Route path ='/message' render={() =><Message/>}/>
+      <Route path='/profile' render={() =><Profile profilePage={props.state.profilePage}/>}/>
+      <Route path ='/message' render={() =><Message  messagePage={props.state.messagePage}/>}/>
       </div>
 
     </div>

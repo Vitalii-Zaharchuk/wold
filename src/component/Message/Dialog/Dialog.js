@@ -9,13 +9,8 @@ let Dialog = (props) =>{
         )
     }
     
-    let dialogData=[
-        {id: 1,dialog: 'Hi'},
-        {id: 2,dialog: 'Fine'},
-        {id: 3,dialog: 'Bad'},
-        {id: 4,dialog: 'Good'}
-    ]
-    let dialogsElements = dialogData.map(d =><DialogItem dialog={d.dialog} id={d.id}/>)
+   
+    let dialogsElements = props.dialogData.map(d =><DialogItem dialog={d.dialog} id={d.id}/>)
 
     
     return(

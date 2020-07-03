@@ -7,13 +7,8 @@ let Name = (props) =>{
         <NavLink to={'/name/' + props.id}>{props.name}</NavLink>
         )
     }
-    let nameData =[
-        {id: 1,name: 'Misha'},
-        {id: 2,name: 'Sasha'},
-        {id: 3,name: 'Igor'},
-        {id: 4,name: 'oleg'}
-    ]
-    let nameElement = nameData.map(n =><NameItem name={n.name} id={n.id}/>)
+    
+    let nameElement = props.nameData.map(n =><NameItem name={n.name} id={n.id}/>)
     return(
         <div className={s.name} >
                 {nameElement}

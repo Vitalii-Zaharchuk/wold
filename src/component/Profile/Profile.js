@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.css'
 import AboutMe from './AboutMe/AboutMe';
 import MyPost from './MyPost/MyPost';
-let Profile = () =>{
+let Profile = (props) =>{
     return(
         <div className={s.profile}>
             <div className={s.obloshka}>
@@ -10,7 +10,7 @@ let Profile = () =>{
 
             </div>
            <AboutMe/>
-           <MyPost/>
+           <MyPost postData={props.profilePage.postData}/>
         </div>
     )
 }
