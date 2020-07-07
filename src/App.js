@@ -15,12 +15,12 @@ function App(props) {
       <Header/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><Profile profilePage={props.state.profilePage}
+      <Route path='/profile' render={() =><Profile profilePage={props.store.getState().profilePage}
       addPost={props.addPost}
       updateNewPostText={props.updateNewPostText}
       />}/>
       <Route path ='/message' render={() =><Message  
-      messagePage={props.state.messagePage}
+      messagePage={props.store.getState().messagePage}
       addDialog={props.addDialog}
       updateNewDialogText={props.updateNewDialogText}
       
