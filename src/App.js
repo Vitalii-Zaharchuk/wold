@@ -8,14 +8,23 @@ import Profile from './component/Profile/Profile';
 import Message from './component/Message/Message';
 
 function App(props) {
+  
   return (
     <BrowserRouter>
     <div className="App">
       <Header/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><Profile profilePage={props.state.profilePage}/>}/>
-      <Route path ='/message' render={() =><Message  messagePage={props.state.messagePage}/>}/>
+      <Route path='/profile' render={() =><Profile profilePage={props.state.profilePage}
+      addPost={props.addPost}
+      updateNewPostText={props.updateNewPostText}
+      />}/>
+      <Route path ='/message' render={() =><Message  
+      messagePage={props.state.messagePage}
+      addDialog={props.addDialog}
+      updateNewDialogText={props.updateNewDialogText}
+      
+      />}/>
       </div>
 
     </div>

@@ -3,6 +3,7 @@ import s from './Profile.module.css'
 import AboutMe from './AboutMe/AboutMe';
 import MyPost from './MyPost/MyPost';
 let Profile = (props) =>{
+    
     return(
         <div className={s.profile}>
             <div className={s.obloshka}>
@@ -10,7 +11,10 @@ let Profile = (props) =>{
 
             </div>
            <AboutMe/>
-           <MyPost postData={props.profilePage.postData}/>
+           <MyPost postData={props.profilePage.postData} addPost={props.addPost}
+           newPostText={props.profilePage.newPostText}
+           updateNewPostText={props.updateNewPostText}
+           />
         </div>
     )
 }
