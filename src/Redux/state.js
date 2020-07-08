@@ -38,31 +38,33 @@ let store = {
     subscribe  (observer) {
         this.rerenderEntireTree = observer
     },
-  
-    addPost  () {
-        let newPost={
-            id:3,
-            post: this.getState().profilePage.newPostText
-        }
-        this.getState().profilePage.postData.push(newPost);
-        this.rerenderEntireTree(this.getState());
-    },
-    addDialog  () {
-        let newDialog = {
-            id: 5,
-            dialog: this.getState().messagePage.newDialogText
-        }
-        this.getState().messagePage.dialogData.push(newDialog)
+    dispatch(action){
+        if(action.type === 'ADD-POST'){
+            let newPost={
+                id:3,
+                post: this.getState().profilePage.newPostText
+            }
+            this.getState().profilePage.postData.push(newPost);
+            this.rerenderEntireTree(this.getState());
+        }else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+            this.getState().profilePage.newPostText = action.newText;
+            this.rerenderEntireTree(this.getState())
+        }else if(action.type === 'ADD-DIALOG'){
+            let newDialog = {
+                id: 5,
+                dialog: this.getState().messagePage.newDialogText
+            }
+            this.getState().messagePage.dialogData.push(newDialog)
+            this.rerenderEntireTree(this.getState())
+        }else if (action.type === 'UPDATE-NEW-DIALOG-TEXT'){
+            this.getState().messagePage.newDialogText = action.newText;
         this.rerenderEntireTree(this.getState())
-    },
-    updateNewPostText  (newText) {
-        this.getState().profilePage.newPostText = newText;
-        this.rerenderEntireTree(this.getState())
-    },
-    updateNewDialogText  (newText) {
-        this.getState().messagePage.newDialogText = newText;
-        this.rerenderEntireTree(this.getState())
+        } 
+
     }
+  
+   
+    
     
 }
 

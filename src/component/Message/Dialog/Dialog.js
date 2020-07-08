@@ -14,11 +14,11 @@ let Dialog = (props) =>{
     let newDialogElement = React.createRef();
     let addDialog = () =>{
         
-        props.addDialog()
+        props.dispatch({type:'ADD-DIALOG'})
     }
     let onDialogChange = ()=>{
         let text = newDialogElement.current.value
-        props.updateNewDialogText(text)
+        props.dispatch({type:'UPDATE-NEW-DIALOG-TEXT',newText:text})
     }
     return(
        <div className={s.dialog}>

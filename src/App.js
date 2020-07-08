@@ -16,13 +16,12 @@ function App(props) {
       <div className='info'>
       <Navbar/>
       <Route path='/profile' render={() =><Profile profilePage={props.store.getState().profilePage}
-      addPost={props.addPost}
-      updateNewPostText={props.updateNewPostText}
+      dispatch={props.dispatch}
+      
       />}/>
       <Route path ='/message' render={() =><Message  
       messagePage={props.store.getState().messagePage}
-      addDialog={props.addDialog}
-      updateNewDialogText={props.updateNewDialogText}
+      dispatch={props.dispatch}
       
       />}/>
       </div>

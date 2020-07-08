@@ -11,11 +11,11 @@ let MyPost = (props) =>{
     let postElement = props.postData.map(p =><PostItem post={p.post} id={p.id}/>)
     let addPost = () =>{
         
-        props.addPost()
+        props.dispatch({type:'ADD-POST'})
     }
     let onPostChange = () =>{
         let text = newPostElement.current.value;
-        props.updateNewPostText(text)
+        props.dispatch({type:'UPDATE-NEW-POST-TEXT' ,newText:text})
     }
     return(
         <div className={s.myPost}>
