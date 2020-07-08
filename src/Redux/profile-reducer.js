@@ -2,7 +2,14 @@ import React from 'react';
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-let profileReducer = (state, action) =>{
+let initialState = {
+    postData: [
+        { id: 1, post: 'I am bad' },
+        { id: 2, post: 'I will be to Ukrain' }
+    ],
+    newPostText: 'fd'
+}
+let profileReducer = (state = initialState, action) =>{
     switch(action.type){
     case ADD_POST:
         let newPost={
