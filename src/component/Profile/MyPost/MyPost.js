@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './MyPost.module.css'
-import { addPostAC, updateNewPostTextAC } from '../../../Redux/state';
+import { addPostAC, updateNewPostTextAC } from '../../../Redux/profile-reducer';
 let MyPost = (props) =>{
    
    

@@ -1,8 +1,7 @@
 import React from 'react';
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const ADD_DIALOG = 'ADD-DIALOG'
-const UPDATE_NEW_DIALOG_TEXT = 'UPDATE-NEW-DIALOG-TEXT'
+import profileReducer from './profile-reducer';
+import messageReducer from './message-reducer';
+
 
 let store = {
     _state: {
@@ -42,27 +41,9 @@ let store = {
         this.rerenderEntireTree = observer
     },
     dispatch(action){
-        if(action.type === ADD_POST){
-            let newPost={
-                id:3,
-                post: this.getState().profilePage.newPostText
-            }
-            this.getState().profilePage.postData.push(newPost);
-            this.rerenderEntireTree(this.getState());
-        }else if(action.type === UPDATE_NEW_POST_TEXT){
-            this.getState().profilePage.newPostText = action.newText;
-            this.rerenderEntireTree(this.getState())
-        }else if(action.type === ADD_DIALOG){
-            let newDialog = {
-                id: 5,
-                dialog: this.getState().messagePage.newDialogText
-            }
-            this.getState().messagePage.dialogData.push(newDialog)
-            this.rerenderEntireTree(this.getState())
-        }else if (action.type === UPDATE_NEW_DIALOG_TEXT){
-            this.getState().messagePage.newDialogText = action.newText;
-        this.rerenderEntireTree(this.getState())
-        } 
+        this._state.profilePage = profileReducer(this._state.profilePage,action)
+        this._state.messagePage = messageReducer(this._state.messagePage, action)
+        this.rerenderEntireTree(this._state)
 
     }
   
@@ -70,28 +51,8 @@ let store = {
     
     
 }
-export let addPostAC =() =>{
-    return{
-        type:'ADD-POST'
-    }
-}
-export let updateNewPostTextAC = (text) =>{
-    return{
-        type:'UPDATE-NEW-POST-TEXT',
-        newText:text
-    }
-}
-export let addDialogAC = () =>{
-    return{
-        type:'ADD-DIALOG'
-    }
-}
-export let updateNewDialogTextAC = (text) =>{
-    return{
-        type:'UPDATE-NEW-DIALOG-TEXT',
-        newText:text
-    }
-}
+
+
 
 
 export default store;
