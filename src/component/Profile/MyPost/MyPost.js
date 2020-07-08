@@ -1,7 +1,9 @@
 import React from 'react';
 import s from './MyPost.module.css'
+import { addPostAC, updateNewPostTextAC } from '../../../Redux/state';
 let MyPost = (props) =>{
-   debugger
+   
+   
     let PostItem = (props) =>{
         return(
         <p>{props.post}</p>
@@ -11,11 +13,12 @@ let MyPost = (props) =>{
     let postElement = props.postData.map(p =><PostItem post={p.post} id={p.id}/>)
     let addPost = () =>{
         
-        props.dispatch({type:'ADD-POST'})
+        props.dispatch(addPostAC())
     }
     let onPostChange = () =>{
         let text = newPostElement.current.value;
-        props.dispatch({type:'UPDATE-NEW-POST-TEXT' ,newText:text})
+        let action = updateNewPostTextAC(text)
+        props.dispatch(action)
     }
     return(
         <div className={s.myPost}>

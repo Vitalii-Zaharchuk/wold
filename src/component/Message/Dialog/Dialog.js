@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Dialog.module.css'
 import { NavLink } from 'react-router-dom';
+import { addDialogAC, updateNewDialogTextAC } from '../../../Redux/state';
 let Dialog = (props) =>{
     
     let DialogItem = (props) =>{
@@ -14,11 +15,12 @@ let Dialog = (props) =>{
     let newDialogElement = React.createRef();
     let addDialog = () =>{
         
-        props.dispatch({type:'ADD-DIALOG'})
+        props.dispatch(addDialogAC())
     }
     let onDialogChange = ()=>{
-        let text = newDialogElement.current.value
-        props.dispatch({type:'UPDATE-NEW-DIALOG-TEXT',newText:text})
+        let text = newDialogElement.current.value;
+        let action = updateNewDialogTextAC(text)
+        props.dispatch(action)
     }
     return(
        <div className={s.dialog}>
