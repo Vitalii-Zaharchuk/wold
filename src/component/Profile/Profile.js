@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Profile.module.css'
 import AboutMe from './AboutMe/AboutMe';
-import MyPost from './MyPost/MyPost';
+
+import MyPostContainer from './MyPost/MypostContainer';
 let Profile = (props) =>{
     
     return(
@@ -11,9 +12,7 @@ let Profile = (props) =>{
 
             </div>
            <AboutMe/>
-           <MyPost postData={props.profilePage.postData} dispatch={props.dispatch} 
-           newPostText={props.profilePage.newPostText}
-          
+           <MyPostContainer store={props.store}
            />
         </div>
     )
