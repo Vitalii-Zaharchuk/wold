@@ -15,13 +15,8 @@ function App(props) {
       <Header/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><Profile store={props.store}
-      
-      />}/>
-      <Route path ='/message' render={() =><Message  
-      store={props.store}
-      
-      />}/>
+      <Route path='/profile' render={() =><Profile />}/>
+      <Route path ='/message' render={() =><Message />}/>
       </div>
 
     </div>

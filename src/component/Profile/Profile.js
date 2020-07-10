@@ -12,8 +12,7 @@ let Profile = (props) =>{
 
             </div>
            <AboutMe/>
-           <MyPostContainer store={props.store}
-           />
+           <MyPostContainer />
         </div>
     )
 }

@@ -8,7 +8,7 @@ let Message =(props) =>{
     return(
         <div className={s.message}>
             <Name store={props.store}/>
-            <DialogContainer store={props.store}
+            <DialogContainer 
            
             />
         </div>
