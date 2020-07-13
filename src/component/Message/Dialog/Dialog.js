@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Dialog.module.css'
 import { NavLink } from 'react-router-dom';
-import { addDialogAC, updateNewDialogTextAC } from '../../../Redux/message-reducer';
+
 let Dialog = (props) =>{
     
     let DialogItem = (props) =>{
@@ -11,7 +11,7 @@ let Dialog = (props) =>{
     }
     
    
-    let dialogsElements = props.dialogData.map(d =><DialogItem dialog={d.dialog} id={d.id}/>)
+    let dialogsElements = props.messagePage.dialogData.map(d =><DialogItem dialog={d.dialog} id={d.id}/>)
     let newDialogElement = React.createRef();
     let addDialog = () =>{
         

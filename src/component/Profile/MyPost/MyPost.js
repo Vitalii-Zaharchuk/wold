@@ -3,26 +3,29 @@ import s from './MyPost.module.css'
 
 let MyPost = (props) =>{
    
-   
-    let PostItem = (props) =>{
-        return(
-        <p>{props.post}</p>
-        )
-    }
-   let newPostElement = React.createRef();
-    let postElement = props.postData.map(p =><PostItem post={p.post} id={p.id}/>)
-    let addPost = () =>{
-        props.addPost()
-    }
     let onPostChange = () =>{
         let text = newPostElement.current.value;
         props.updateNewPostTextAC(text)
         
     }
+    let addPost = () =>{
+        props.addPost()
+    }
+    let newPostElement = React.createRef();
+    let PostItem = (props) =>{
+        return(
+        <p>{props.post}</p>
+        )
+    }
+   
+    let postElement = props.profilePage.postData.map(p =><PostItem post={p.post} id={p.id}/>)
+   
+   
+    
     return(
         <div className={s.myPost}>
             <p>My posts</p>
-            <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText}></textarea>
+            <textarea ref={newPostElement} onChange={onPostChange} value={props.profilePage.newPostText}></textarea>
             <button onClick={addPost}>Send</button>
             <div>
                 {postElement}

@@ -16,11 +16,15 @@ let profileReducer = (state = initialState, action) =>{
             id:3,
             post: state.newPostText
         }
-        state.postData.push(newPost);
-        return state
+        return {...state,
+        postData:[...state.postData,newPost]
+        }
+        
     case UPDATE_NEW_POST_TEXT:
-        state.newPostText = action.newText;
-        return state
+        return {...state,
+        newPostText:action.newText
+        }
+       
     default:
             return state
     }

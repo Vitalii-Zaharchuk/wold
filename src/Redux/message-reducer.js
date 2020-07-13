@@ -26,11 +26,15 @@ let messageReducer = (state = initialState,action) =>{
             id: 5,
             dialog: state.newDialogText
         }
-       state.dialogData.push(newDialog)
-       return state
+        return {...state,
+        dialogData:[...state.dialogData,newDialog]
+        }
+       
        case  UPDATE_NEW_DIALOG_TEXT:
-        state.newDialogText = action.newText;
-        return state
+           return {...state,
+        newDialogText:action.newText
+        }
+        
         default:
             return state
     }

@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './Name.module.css'
 import { NavLink } from 'react-router-dom';
-import StoreContext from '../../../StoreContext';
+
 import store from '../../../Redux/redux-store';
 let Name = (props) =>{
-    return(
-        <StoreContext.Consumer>{
-            (store) =>{
+    
                 let state = store.getState()
                 let NameItem = (props) =>{
                     return(
@@ -20,11 +18,10 @@ let Name = (props) =>{
                             {nameElement}
                     </div>
                 ) 
-            }
-            }
+            
+            
 
-        </StoreContext.Consumer>
-    )
+        
     
 }
 export default Name;
