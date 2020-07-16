@@ -7,6 +7,8 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import Profile from './component/Profile/Profile';
 import Message from './component/Message/Message';
 
+import  UserContainer  from './component/User/UserContainer';
+
 function App(props) {
   
   return (
@@ -17,6 +19,7 @@ function App(props) {
       <Navbar/>
       <Route path='/profile' render={() =><Profile />}/>
       <Route path ='/message' render={() =><Message />}/>
+      <Route path ='/user' render={() =><UserContainer/>}/>
       </div>
 
     </div>

@@ -6,6 +6,7 @@ let Navbar = () =>{
         <div className={s.navbar}>
                 <NavLink to='/profile'>Profile</NavLink>
                 <NavLink to='/message'>Message</NavLink>
+                <NavLink to = '/user'>User</NavLink>
         </div>
     )
 }

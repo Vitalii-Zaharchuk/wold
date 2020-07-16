@@ -25,7 +25,7 @@ let Dialog = (props) =>{
     return(
        <div className={s.dialog}>
            {dialogsElements}
-           <textarea  ref={newDialogElement} onChange={onDialogChange} value={props.newDialogText}></textarea>
+           <textarea  ref={newDialogElement} onChange={onDialogChange} value={props.messagePage.newDialogText}></textarea>
            <button onClick={addDialog}>Send</button>
        </div>
         
