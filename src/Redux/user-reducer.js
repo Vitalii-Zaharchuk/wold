@@ -1,14 +1,10 @@
 import React from 'react';
 const FOLLOW_AC = 'FOLLOWAC';
 const UNFOLLOW_AC = 'UNFOLLOWAC'
+const SETUSERS_AC = 'SETUSERSAC' 
 let initialState  = {
     users:[
-        {id:1, name:'Dima',post:'I am loking joob',country:'Belarus',city:'Minsk',follow:true,
-        photo:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRb4InSVP1QgDD-j5tbcLSIIVDAiu1iamJtZQ&usqp=CAU'    },
-        {id:2, name:'Sasha',post:'I am loking joob',country:'Ukraine',city:'Kiev',follow:true,
-        photo:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRb4InSVP1QgDD-j5tbcLSIIVDAiu1iamJtZQ&usqp=CAU'     },
-        {id:3, name:'Igor',post:'I am loking joob',country:'Russia',city:'Moskow',follow:false,
-        photo:'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRb4InSVP1QgDD-j5tbcLSIIVDAiu1iamJtZQ&usqp=CAU'     }
+        
     ]
 }
 let userReducer = (state= initialState,action)=>{
@@ -37,8 +33,13 @@ let userReducer = (state= initialState,action)=>{
                     return u;
                 })
             }
-            default:
-                return state  
+         case SETUSERS_AC:
+             return{
+                 ...state,
+                 users:action.users
+             }
+        default:
+            return state  
         }
     
 }
@@ -50,6 +51,11 @@ export let FOLLOWAC = (userId) =>{
 export let UNFOLLOWAC = (userId) =>{
     return{
         type: 'UNFOLLOWAC',userId
+    }
+}
+export let SETUSERSAC = (users) =>{
+    return{
+        type:'SETUSERSAC', users
     }
 }
 export default userReducer
