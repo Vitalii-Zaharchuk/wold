@@ -4,10 +4,11 @@ import './App.css';
 import Header from './component/Header/Header';
 import Navbar from './component/Navbar/Navbar';
 import { Route, BrowserRouter } from 'react-router-dom';
-import Profile from './component/Profile/Profile';
+
 import Message from './component/Message/Message';
 
 import  UserContainer  from './component/User/UserContainer';
+import ProfileContainer from './component/Profile/ProfileContainer';
 
 function App(props) {
   
@@ -17,7 +18,7 @@ function App(props) {
       <Header/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><Profile />}/>
+      <Route path='/profile' render={() =><ProfileContainer/>}/>
       <Route path ='/message' render={() =><Message />}/>
       <Route path ='/user' render={() =><UserContainer/>}/>
       </div>

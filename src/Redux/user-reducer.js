@@ -4,13 +4,15 @@ const UNFOLLOW_AC = 'UNFOLLOWAC'
 const SETUSERS_AC = 'SETUSERSAC' 
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USER_COUNT = 'SET_TOTAL_USER_COUNT'
+const TOGLE_IS_FETHING = 'TOGLE_IS_FETHING'
 let initialState  = {
     users:[
         
     ],
     pageSize:5,
     totalUsersCount:30,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
    
 }
 let userReducer = (state= initialState,action)=>{
@@ -51,31 +53,41 @@ let userReducer = (state= initialState,action)=>{
                 return {
                     ...state,
                     totalUserCount:action.totalUsersCount
-                }      
+                }  
+        case TOGLE_IS_FETHING:
+            return{
+                ...state,
+                isFetching:action.isFetching
+            }            
         default:
             return state  
         }
     
 }
-export let FOLLOWAC = (userId) =>{
+export let follow = (userId) =>{
     return{
         type: 'FOLLOWAC',userId
     }
 }
-export let UNFOLLOWAC = (userId) =>{
+export let unfollow = (userId) =>{
     return{
         type: 'UNFOLLOWAC',userId
     }
 }
-export let SETUSERSAC = (users) =>{
+export let setUsers = (users) =>{
     return{
         type:'SETUSERSAC', users
     }
 }
-export let setCurrentPageAC = (currentPage) =>({type:'SET_CURRENT_PAGE',currentPage})
+export let setCurrentPage = (currentPage) =>({type:'SET_CURRENT_PAGE',currentPage})
 export let setTotalUserCount = (totalUserCount) =>{
     return{
         type:'SET_TOTAL_USER_COUNT', totalUserCount
+    }
+}
+export let togleIsFetching = (isFetching) =>{
+    return{
+        type:'TOGLE_IS_FETHING', isFetching
     }
 }
 export default userReducer

@@ -1,4 +1,5 @@
 import React from 'react';
+const SET_USERS_PROFILE = 'SET_USERS_PROFILE'
 
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
@@ -7,7 +8,8 @@ let initialState = {
         { id: 1, post: 'I am bad' },
         { id: 2, post: 'I will be to Ukrain' }
     ],
-    newPostText: 'fd'
+    newPostText: 'fd',
+    profile:null
 }
 let profileReducer = (state = initialState, action) =>{
     switch(action.type){
@@ -24,7 +26,10 @@ let profileReducer = (state = initialState, action) =>{
         return {...state,
         newPostText:action.newText
         }
-       
+    case SET_USERS_PROFILE:
+        return{...state,
+        profile:action.profile
+        }   
     default:
             return state
     }
@@ -43,6 +48,11 @@ export let updateNewPostTextAC = (text) =>{
     return{
         type:'UPDATE-NEW-POST-TEXT',
         newText:text
+    }
+}
+export let setUsersProfile = (profile) =>{
+    return{
+        type:'SET_USERS_PROFILE',profile
     }
 }
 export default profileReducer;
