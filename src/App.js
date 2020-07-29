@@ -9,16 +9,17 @@ import Message from './component/Message/Message';
 
 import  UserContainer  from './component/User/UserContainer';
 import ProfileContainer from './component/Profile/ProfileContainer';
+import HeaderContainer from './component/Header/HeaderContainer';
 
 function App(props) {
   
   return (
     <BrowserRouter>
     <div className="App">
-      <Header/>
+      <HeaderContainer/>
       <div className='info'>
       <Navbar/>
-      <Route path='/profile' render={() =><ProfileContainer/>}/>
+      <Route path='/profile/:userId?' render={() =><ProfileContainer/>}/>
       <Route path ='/message' render={() =><Message />}/>
       <Route path ='/user' render={() =><UserContainer/>}/>
       </div>
