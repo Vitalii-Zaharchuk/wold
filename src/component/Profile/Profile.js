@@ -3,8 +3,9 @@ import s from './Profile.module.css'
 import AboutMe from './AboutMe/AboutMe';
 
 import MyPostContainer from './MyPost/MypostContainer';
+import { Redirect } from 'react-router-dom';
 let Profile = (props) =>{
-    
+    //if(!props.isAuth) return <Redirect to='/login'/>
     return(
         <div className={s.profile}>
             <div className={s.obloshka}>

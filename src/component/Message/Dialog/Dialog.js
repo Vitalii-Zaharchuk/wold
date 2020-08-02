@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Dialog.module.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 
 let Dialog = (props) =>{
     
@@ -22,6 +22,7 @@ let Dialog = (props) =>{
         props.updateNewDialogTextAC(text)
         
     }
+    
     return(
        <div className={s.dialog}>
            {dialogsElements}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { auth } from '../api/api';
 const SET_USER_DATA  = 'SET_USER_DATA'
 let initialState = {
     id: null,
@@ -24,6 +25,17 @@ let authReducer  = (state= initialState, action)=>{
 export let setUserData = (id,login,email)=>{
     return{
         type:'SET_USER_DATA', data:{id,login,email}
+    }
+}
+
+export const authMeThunk = () =>{
+  return (dispatch) =>{
+    auth.me().then(response => {
+      if (response.data.resultCode === 0) {
+                let { id, login, email } = response.data.data
+                dispatch(setUserData(id, login, email))
+  }
+        })
     }
 }
 export default authReducer;  

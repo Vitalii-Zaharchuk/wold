@@ -4,9 +4,19 @@ import { addDialogAC, updateNewDialogTextAC } from '../../../Redux/message-reduc
 import Dialog from './Dialog';
 
 import { connect } from 'react-redux';
+import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
+class DialogContainer extends React.Component{
+    render(){
+        return(
+        <Dialog {...this.props}/>
+        )
+    }
+}
 let mapStateToProps = (state) =>{
     return{
-        messagePage: state.messagePage
+        messagePage: state.messagePage,
+        isAuth:state.authPage.isAuth
         
     }
 }
@@ -22,6 +32,9 @@ let mapDispatchToProps = (dispatch) =>{
 
     }
 }   
-let DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
+export default compose(
+    connect (mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)
+(DialogContainer)
 
-export default DialogContainer;
