@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './AboutMe.module.css'
 import Prelolder from '../../common/Prelolder/Prelolder'
+import ProfileStatus from './ProfileStatus';
 let AboutMe = (props) =>{
     if (!props.profile){
         return <Prelolder/>
@@ -18,8 +19,10 @@ let AboutMe = (props) =>{
                     
                     {props.profile.fullName === null ? <p>Igor Bezus</p> : props.profile.fullName}
                     
+                    
                     <p>21</p>
                     <p>Kiev</p>
+                    <ProfileStatus status='Hello my friend'/>
                 </div>
                 
             </div>
