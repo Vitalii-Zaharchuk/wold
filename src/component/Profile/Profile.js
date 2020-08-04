@@ -14,7 +14,7 @@ let Profile = (props) =>{
 
             </div>
     
-           <AboutMe profile={props.profile}/>
+           <AboutMe profile={props.profile} status={props.status}  updateStatusThunk={props.updateStatusThunk}/>
            <MyPostContainer store={props.store}/>
         </div>
     )

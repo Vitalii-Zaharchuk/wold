@@ -25,6 +25,14 @@ export const usersAPI = {
     }
     
 }
+export const profileAPI = {
+    getStatus(userId){
+        return instunse.get(`profile/status` + userId)
+    },
+    updateStatus(status){
+        return instunse.put(`profile/status`,{status:status})
+    }
+}
 export const auth ={
     me(){
         return instunse.get(`https://social-network.samuraijs.com/api/1.0/auth/me`) 

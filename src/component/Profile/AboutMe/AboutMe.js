@@ -6,7 +6,7 @@ let AboutMe = (props) =>{
     if (!props.profile){
         return <Prelolder/>
     }
-  
+    
     return (
         <div className={s.aboutMe}>
             
@@ -22,7 +22,8 @@ let AboutMe = (props) =>{
                     
                     <p>21</p>
                     <p>Kiev</p>
-                    <ProfileStatus status='Hello my friend'/>
+                    <ProfileStatus  status={props.status}
+                    updateStatusThunk={props.updateStatusThunk}/>
                 </div>
                 
             </div>

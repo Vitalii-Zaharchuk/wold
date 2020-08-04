@@ -5,7 +5,7 @@ import * as axios from 'axios';
 import MyPostContainer from './MyPost/MypostContainer';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { setUsersProfile, getUserProfileThunk } from '../../Redux/profile-reducer';
+import { setUsersProfile, getUserProfileThunk, getStatusThunk, updateStatusThunk } from '../../Redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { usersAPI } from '../../api/api';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -17,17 +17,17 @@ class ProfileContainer extends React.Component{
         
         let userId = this.props.match.params.userId;
         if(!userId){
-            userId = 2
+            userId = 1049
         }
         this.props.getUserProfileThunk(userId)
-        //usersAPI.userProfile(userId).then(response=>{
-           //   this.props.setUsersProfile(response.data)
-           // })
+       this.props.getStatusThunk(userId)
     }
     render(){
         return(
             <Profile {...this.props}
             profile={this.props.profile}
+            status={this.props.status}
+            updateStatusThunk={this.props.updateStatusThunk}
             />
             
         )
@@ -41,12 +41,13 @@ class ProfileContainer extends React.Component{
 let mapStateToProps = (state) =>{
     return{
         profile:state.profilePage.profile,
+        status:state.profilePage.status
         
     }
 
 } 
 export default compose(
-    connect (mapStateToProps,{setUsersProfile,getUserProfileThunk}),
+    connect (mapStateToProps,{setUsersProfile,getUserProfileThunk, getStatusThunk, updateStatusThunk}),
     withRouter,
     
     withAuthRedirect
