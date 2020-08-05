@@ -50,5 +50,5 @@ export default compose(
     connect (mapStateToProps,{setUsersProfile,getUserProfileThunk, getStatusThunk, updateStatusThunk}),
     withRouter,
     
-    withAuthRedirect
+    
 )(ProfileContainer)
