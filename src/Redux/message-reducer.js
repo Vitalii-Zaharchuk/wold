@@ -15,8 +15,8 @@ let initialState = {
         { id: 2, dialog: 'Fine' },
         { id: 3, dialog: 'Bad' },
         { id: 4, dialog: 'Good' }
-    ],
-    newDialogText: 'Greate'
+    ]
+    
 }
 let messageReducer = (state = initialState,action) =>{
     
@@ -24,30 +24,23 @@ let messageReducer = (state = initialState,action) =>{
         case ADD_DIALOG:
         let newDialog = {
             id: 5,
-            dialog: state.newDialogText
+            dialog: action.addNewDialog
         }
         return {...state,
-        dialogData:[...state.dialogData,newDialog]
+        dialogData:[...state.dialogData,newDialog],
+        addNewDialog:action.addNewDialog
         }
        
-       case  UPDATE_NEW_DIALOG_TEXT:
-           return {...state,
-        newDialogText:action.newText
-        }
+       
         
         default:
             return state
     }
 }
-export let addDialogAC = () =>{
+export let addDialogAC = (addNewDialog) =>{
     return{
-        type:'ADD-DIALOG'
+        type:'ADD-DIALOG',addNewDialog
     }
 }
-export let updateNewDialogTextAC = (text) =>{
-    return{
-        type:'UPDATE-NEW-DIALOG-TEXT',
-        newText:text
-    }
-}
+
 export default messageReducer

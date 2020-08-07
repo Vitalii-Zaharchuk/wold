@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { addDialogAC, updateNewDialogTextAC } from '../../../Redux/message-reducer';
+import { addDialogAC } from '../../../Redux/message-reducer';
 import Dialog from './Dialog';
 
 import { connect } from 'react-redux';
@@ -22,19 +22,16 @@ let mapStateToProps = (state) =>{
 }
 let mapDispatchToProps = (dispatch) =>{
     return{
-        updateNewDialogTextAC: (text) =>{
-            let action = updateNewDialogTextAC(text)
-           dispatch(action)
-        },
-        addDialog:() =>{
-            dispatch(addDialogAC())
+       
+        addDialog:(addNewDialog) =>{
+            dispatch(addDialogAC(addNewDialog))
         }
 
     }
 }   
 export default compose(
     connect (mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
+    //withAuthRedirect
 )
 (DialogContainer)
 

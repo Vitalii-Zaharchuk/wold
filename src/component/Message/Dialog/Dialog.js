@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Dialog.module.css'
 import { NavLink, Redirect } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
 let Dialog = (props) =>{
     
@@ -13,9 +14,8 @@ let Dialog = (props) =>{
    
     let dialogsElements = props.messagePage.dialogData.map(d =><DialogItem dialog={d.dialog} id={d.id}/>)
     let newDialogElement = React.createRef();
-    let addDialog = () =>{
-        
-        props.addDialog()
+    let addDialogReduxForm = (value) =>{
+         props.addDialog(value.addNewDialog)
     }
     let onDialogChange = ()=>{
         let text = newDialogElement.current.value;
@@ -26,12 +26,21 @@ let Dialog = (props) =>{
     return(
        <div className={s.dialog}>
            {dialogsElements}
-           <textarea  ref={newDialogElement} onChange={onDialogChange} value={props.messagePage.newDialogText}></textarea>
-           <button onClick={addDialog}>Send</button>
+           <AddMesageReduxForm onSubmit={addDialogReduxForm}/>
        </div>
         
 
         
     )
 }
+let AddMessageForm = (props) =>{
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <Field name={'addNewDialog'} component={'textarea'}/>
+            
+             <button >Send</button>
+        </form>
+    )
+}
+const AddMesageReduxForm = reduxForm({form:'addMessageForm'})(AddMessageForm)
 export default Dialog;
