@@ -1,19 +1,29 @@
 import React from 'react'
 import s from './Login.module.css'
 import { reduxForm, Field } from 'redux-form'
+import { Input } from '../common/FormsControls/FormsControls'
+import { required } from '../../utils/validators/validators'
+import { connect } from 'react-redux'
+import { LoginThunk } from '../../Redux/auth-reducer'
+import { Redirect } from 'react-router-dom'
 
 let LoginForm = (props) =>{
+    //const maxLendth5 = maxLengthCreator(5)
     return(
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={'Login'} component={'input'} name={'login'}/>
+                <Field placeholder={'Email'} component={Input} name={'email'} validate={[required]}/>
             </div>
             <div>
-                <Field placeholder={'password'} component={'input'} name={'password'}/>
+                <Field placeholder={'password'} component={Input} name={'password'} validate={[required]} type={'password'}/>
             </div>
             <div>
-                <Field type={'checkbox'} component={'input'} name={'checkbox'}/> remember me
+                <Field type={'checkbox'} component={Input} name={'checkbox'} /> remember me
             </div>
+            
+            {props.error && <div>{props.error}</div>}
+            
+            
             <div>
                 <button>Login</button>
             </div>
@@ -23,8 +33,12 @@ let LoginForm = (props) =>{
 const LoginReduxForm = reduxForm({form:'login'})(LoginForm)
 let Login = (props) =>{
     const onSubmit = (formData) =>{
-        console.log(formData)
+        props.LoginThunk(formData.email,formData.password,formData.rememberMe)
     }
+    if(props.isAuth){
+        return <Redirect to={'/profile'}/>
+    }
+
     return(
         <div className={s.login}>
             <h1>Login</h1>
@@ -32,4 +46,9 @@ let Login = (props) =>{
         </div>
     )
 }
-export default Login;
+let mapStateToProps = (state) =>{
+    return{
+        isAuth:state.authPage.isAuth
+    }
+}
+export default connect (mapStateToProps , {LoginThunk}) (Login);

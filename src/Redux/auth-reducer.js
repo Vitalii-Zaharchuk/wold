@@ -1,5 +1,6 @@
 import React from 'react';
 import { auth } from '../api/api';
+import { stopSubmit } from 'redux-form';
 const SET_USER_DATA  = 'SET_USER_DATA'
 let initialState = {
     id: null,
@@ -13,8 +14,8 @@ let authReducer  = (state= initialState, action)=>{
         case SET_USER_DATA:
             return{
                 ...state,
-                ...action.data,
-                isAuth:true
+                ...action.payload,
+                
             }
             default:
                 return state
@@ -22,19 +23,43 @@ let authReducer  = (state= initialState, action)=>{
         
     }
 }
-export let setUserData = (id,login,email)=>{
+export let setUserData = (id,login,email, isAuth)=>{
     return{
-        type:'SET_USER_DATA', data:{id,login,email}
+        type:'SET_USER_DATA', payload:{id,login,email,isAuth}
     }
 }
 
 export const authMeThunk = () =>{
   return (dispatch) =>{
-    auth.me().then(response => {
+   return auth.me().then(response => {
       if (response.data.resultCode === 0) {
                 let { id, login, email } = response.data.data
-                dispatch(setUserData(id, login, email))
+                dispatch(setUserData(id, login, email,true))
   }
+        })
+    }
+}
+export const LoginThunk = (email,password,rememberMe) =>{
+    return (dispatch) =>{
+        auth.login(email,password,rememberMe)
+        .then(response =>{
+            if(response.data.resultCode === 0){
+                dispatch(authMeThunk())
+            }else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+            dispatch(stopSubmit('login',{_error:message}))
+            }
+           
+        })
+    }
+}
+export const LogoutThunk  = () =>{
+    return (dispatch) =>{
+        auth.logout()
+        .then(response =>{
+            if(response.data.resultCode === 0){
+                dispatch(setUserData(null, null, null,false))
+            }
         })
     }
 }

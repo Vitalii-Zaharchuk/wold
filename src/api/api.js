@@ -36,5 +36,11 @@ export const profileAPI = {
 export const auth ={
     me(){
         return instunse.get(`https://social-network.samuraijs.com/api/1.0/auth/me`) 
+    },
+    login(email,password,rememberMe){
+        return instunse.post(`auth/login`,{email,password,rememberMe})
+    },
+    logout(){
+        return instunse.delete(`auth/login`)
     }
 }

@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './Redux/redux-store';
 
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
 
@@ -15,7 +16,10 @@ import { Provider } from 'react-redux';
     <React.StrictMode>
       
       <Provider store={store}>
-          <App  />
+        <BrowserRouter>
+        <App  />
+        </BrowserRouter>
+          
       </Provider>    
       
     </React.StrictMode>,
